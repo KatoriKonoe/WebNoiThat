@@ -1,0 +1,61 @@
+﻿<style type = "text/css">
+    #Datmua a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        display: block;
+        padding-top: 10px;
+        height: 35px;
+        float: right;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+    }
+    #Datmua a:hover
+    {
+        background-color: gray;
+        color: red;
+    }
+</style>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h3 class="product_title">Chi Tiết Sản Phẩm</h3>
+<div class="prod_box">
+    <a href="#" class="module a">
+        <h3 class="product_title">   @Model.TENDV</h3>
+        <img class="product_img" src="~/images/@Model.HIANH" width="150" />
+        <p class="prod_price">@Model.GIABANHT VNĐ</p>
+        <div class="specifications">
+            Mô Tả: <span class="blue">@Model.MOTA</span><br />
+            Số Lượng: <span class="blue">@Model.Soluongton </span>><br />
+        </div>
+        <div class="dathang">
+            <a href="@Url.Action("ThemGiohang", "Giohang" , new { @iMADV = @Model.MADV, @strURL=Request.Url.ToString()})" class="list-group-item">ĐẶT HÀNG</a>            
+        </div>
+    </a>
+</div>
+@*<div class="center_content">
+        <div class="center_title_bar">@Model.TENDV</div>
+        <div class="prod_box_big">
+            <div class="center_prod_box_big">
+                <div class="product_img_big">
+                    <a href="javascript:popImage('images/big_pic.jpg','Some Title')" title="header=[Zoom] body=[&nbsp;] fade=[on]"><img src="images/p3.jpg" alt="" border="0" /></a>
+                </div>
+                <div class="details_big_box">
+                    <div class="product_title_big">Makita 156 MX-VL</div>
+                    <div class="specifications">
+                        Số Lượng: <span class="blue">@Model.SLTon</span><br />
+                        Mô Tả: <span class="blue">@Model.MOTA</span><br />
+                        Transport: <span class="blue"> delivery services company</span><br />
+                        Include :<span class="blue"> TVA</span><br />
+                    </div>
+                    <div class="prod_price_big"><span class="reduce">350$</span> <span class="price">270$</span></div>
+                    <a href="http://all-free-download.com/free-website-templates/" class="prod_buy">add to cart</a> <a href="http://all-free-download.com/free-website-templates/" class="prod_compare">compare</a>
+                </div>
+            </div>
+        </div>
+    </div>*@

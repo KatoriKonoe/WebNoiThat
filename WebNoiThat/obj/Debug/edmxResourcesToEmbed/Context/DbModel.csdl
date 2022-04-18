@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DoVatNT">
+    <Key>
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MADV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MATL" Type="Int32" />
+    <Property Name="MANCC" Type="Int32" />
+    <Property Name="TENDV" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MOTA" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="GIABANHT" Type="Double" />
+    <Property Name="KHUYENMAI" Type="Double" />
+    <Property Name="HIANH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYCAPNHAP" Type="DateTime" Precision="3" />
+    <Property Name="SLTON" Type="Int32" />
+    <NavigationProperty Name="LOAIDV" Relationship="Self.FK_LOAINT" FromRole="DoVatNT" ToRole="LOAIDV" />
+    <NavigationProperty Name="CTHDDATHANGs" Relationship="Self.FK_MADOVAT" FromRole="DoVatNT" ToRole="CTHDDATHANG" />
+    <NavigationProperty Name="NHACUNGCAP" Relationship="Self.FK_NHACUNGCAP" FromRole="DoVatNT" ToRole="NHACUNGCAP" />
+  </EntityType>
+  <EntityType Name="HOADONDATHANG">
+    <Key>
+      <PropertyRef Name="MAHDDATHANG" />
+    </Key>
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="MATLTT" Type="Int32" />
+    <Property Name="MAHDDATHANG" Type="Int32" Nullable="false" />
+    <Property Name="NGAYMUA" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CTHDDATHANGs" Relationship="Self.FK_MAHDDATHANG" FromRole="HOADONDATHANG" ToRole="CTHDDATHANG" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_MAHDMUAHANG" FromRole="HOADONDATHANG" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENKH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TAIKHOANG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MATKHAU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HOADONDATHANGs" Relationship="Self.FK_MAHDMUAHANG" FromRole="KHACHHANG" ToRole="HOADONDATHANG" />
+  </EntityType>
+  <EntityType Name="LOAIDV">
+    <Key>
+      <PropertyRef Name="MATL" />
+    </Key>
+    <Property Name="MATL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENTL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DoVatNTs" Relationship="Self.FK_LOAINT" FromRole="LOAIDV" ToRole="DoVatNT" />
+  </EntityType>
+  <EntityType Name="NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="MANCC" />
+    </Key>
+    <Property Name="MANCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENNCC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DoVatNTs" Relationship="Self.FK_NHACUNGCAP" FromRole="NHACUNGCAP" ToRole="DoVatNT" />
+  </EntityType>
+  <EntityType Name="THANHTOAN">
+    <Key>
+      <PropertyRef Name="MATLTT" />
+    </Key>
+    <Property Name="MATLTT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENTLTT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CTHDDATHANGs" Relationship="Self.FK_MATLTT" FromRole="THANHTOAN" ToRole="CTHDDATHANG" />
+  </EntityType>
+  <EntityType Name="CTHDDATHANG">
+    <Key>
+      <PropertyRef Name="MAHDDATHANG" />
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MAHDDATHANG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MADV" Type="Int32" Nullable="false" />
+    <Property Name="MATLTT" Type="Int32" />
+    <Property Name="SL" Type="Int32" />
+    <Property Name="KHUYENMAI" Type="Double" />
+    <Property Name="GIABAN" Type="Double" />
+    <Property Name="KHUYENMAIBAN" Type="Double" />
+    <NavigationProperty Name="DoVatNT" Relationship="Self.FK_MADOVAT" FromRole="CTHDDATHANG" ToRole="DoVatNT" />
+    <NavigationProperty Name="HOADONDATHANG" Relationship="Self.FK_MAHDDATHANG" FromRole="CTHDDATHANG" ToRole="HOADONDATHANG" />
+    <NavigationProperty Name="THANHTOAN" Relationship="Self.FK_MATLTT" FromRole="CTHDDATHANG" ToRole="THANHTOAN" />
+  </EntityType>
+  <Association Name="FK_LOAINT">
+    <End Role="LOAIDV" Type="Self.LOAIDV" Multiplicity="0..1" />
+    <End Role="DoVatNT" Type="Self.DoVatNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIDV">
+        <PropertyRef Name="MATL" />
+      </Principal>
+      <Dependent Role="DoVatNT">
+        <PropertyRef Name="MATL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MADOVAT">
+    <End Role="DoVatNT" Type="Self.DoVatNT" Multiplicity="1" />
+    <End Role="CTHDDATHANG" Type="Self.CTHDDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoVatNT">
+        <PropertyRef Name="MADV" />
+      </Principal>
+      <Dependent Role="CTHDDATHANG">
+        <PropertyRef Name="MADV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHACUNGCAP">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+    <End Role="DoVatNT" Type="Self.DoVatNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="DoVatNT">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAHDDATHANG">
+    <End Role="HOADONDATHANG" Type="Self.HOADONDATHANG" Multiplicity="1" />
+    <End Role="CTHDDATHANG" Type="Self.CTHDDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADONDATHANG">
+        <PropertyRef Name="MAHDDATHANG" />
+      </Principal>
+      <Dependent Role="CTHDDATHANG">
+        <PropertyRef Name="MAHDDATHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAHDMUAHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="HOADONDATHANG" Type="Self.HOADONDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="HOADONDATHANG">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATLTT">
+    <End Role="THANHTOAN" Type="Self.THANHTOAN" Multiplicity="0..1" />
+    <End Role="CTHDDATHANG" Type="Self.CTHDDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHTOAN">
+        <PropertyRef Name="MATLTT" />
+      </Principal>
+      <Dependent Role="CTHDDATHANG">
+        <PropertyRef Name="MATLTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLNTEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DoVatNTs" EntityType="Self.DoVatNT" />
+    <EntitySet Name="HOADONDATHANGs" EntityType="Self.HOADONDATHANG" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="LOAIDVs" EntityType="Self.LOAIDV" />
+    <EntitySet Name="NHACUNGCAPs" EntityType="Self.NHACUNGCAP" />
+    <EntitySet Name="THANHTOANs" EntityType="Self.THANHTOAN" />
+    <EntitySet Name="CTHDDATHANGs" EntityType="Self.CTHDDATHANG" />
+    <AssociationSet Name="FK_LOAINT" Association="Self.FK_LOAINT">
+      <End Role="LOAIDV" EntitySet="LOAIDVs" />
+      <End Role="DoVatNT" EntitySet="DoVatNTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MADOVAT" Association="Self.FK_MADOVAT">
+      <End Role="DoVatNT" EntitySet="DoVatNTs" />
+      <End Role="CTHDDATHANG" EntitySet="CTHDDATHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHACUNGCAP" Association="Self.FK_NHACUNGCAP">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
+      <End Role="DoVatNT" EntitySet="DoVatNTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAHDDATHANG" Association="Self.FK_MAHDDATHANG">
+      <End Role="HOADONDATHANG" EntitySet="HOADONDATHANGs" />
+      <End Role="CTHDDATHANG" EntitySet="CTHDDATHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAHDMUAHANG" Association="Self.FK_MAHDMUAHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="HOADONDATHANG" EntitySet="HOADONDATHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATLTT" Association="Self.FK_MATLTT">
+      <End Role="THANHTOAN" EntitySet="THANHTOANs" />
+      <End Role="CTHDDATHANG" EntitySet="CTHDDATHANGs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

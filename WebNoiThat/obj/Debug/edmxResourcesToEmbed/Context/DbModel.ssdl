@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QLNT.dbo.CTHDDATHANG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CTHDDATHANG">
+    <Key>
+      <PropertyRef Name="MAHDDATHANG" />
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MAHDDATHANG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MADV" Type="int" Nullable="false" />
+    <Property Name="MATLTT" Type="int" />
+    <Property Name="SL" Type="int" />
+    <Property Name="KHUYENMAI" Type="float" />
+    <Property Name="GIABAN" Type="float" />
+    <Property Name="KHUYENMAIBAN" Type="float" />
+  </EntityType>
+  <EntityType Name="DoVatNT">
+    <Key>
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MADV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MATL" Type="int" />
+    <Property Name="MANCC" Type="int" />
+    <Property Name="TENDV" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MOTA" Type="nvarchar" MaxLength="250" />
+    <Property Name="GIABANHT" Type="float" />
+    <Property Name="KHUYENMAI" Type="float" />
+    <Property Name="HIANH" Type="nvarchar" MaxLength="50" />
+    <Property Name="NGAYCAPNHAP" Type="datetime" />
+    <Property Name="SLTON" Type="int" />
+  </EntityType>
+  <EntityType Name="HOADONDATHANG">
+    <Key>
+      <PropertyRef Name="MAHDDATHANG" />
+    </Key>
+    <Property Name="MAKH" Type="int" />
+    <Property Name="MATLTT" Type="int" />
+    <Property Name="MAHDDATHANG" Type="int" Nullable="false" />
+    <Property Name="NGAYMUA" Type="datetime" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENKH" Type="nvarchar" MaxLength="30" />
+    <Property Name="TAIKHOANG" Type="nvarchar" MaxLength="50" />
+    <Property Name="MATKHAU" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="50" />
+    <Property Name="DT" Type="varchar" MaxLength="11" />
+    <Property Name="NGAYSINH" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LOAIDV">
+    <Key>
+      <PropertyRef Name="MATL" />
+    </Key>
+    <Property Name="MATL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENTL" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="MANCC" />
+    </Key>
+    <Property Name="MANCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENNCC" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="THANHTOAN">
+    <Key>
+      <PropertyRef Name="MATLTT" />
+    </Key>
+    <Property Name="MATLTT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENTLTT" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <Association Name="FK_LOAINT">
+    <End Role="LOAIDV" Type="Self.LOAIDV" Multiplicity="0..1" />
+    <End Role="DoVatNT" Type="Self.DoVatNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIDV">
+        <PropertyRef Name="MATL" />
+      </Principal>
+      <Dependent Role="DoVatNT">
+        <PropertyRef Name="MATL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MADOVAT">
+    <End Role="DoVatNT" Type="Self.DoVatNT" Multiplicity="1" />
+    <End Role="CTHDDATHANG" Type="Self.CTHDDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoVatNT">
+        <PropertyRef Name="MADV" />
+      </Principal>
+      <Dependent Role="CTHDDATHANG">
+        <PropertyRef Name="MADV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAHDDATHANG">
+    <End Role="HOADONDATHANG" Type="Self.HOADONDATHANG" Multiplicity="1" />
+    <End Role="CTHDDATHANG" Type="Self.CTHDDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADONDATHANG">
+        <PropertyRef Name="MAHDDATHANG" />
+      </Principal>
+      <Dependent Role="CTHDDATHANG">
+        <PropertyRef Name="MAHDDATHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAHDMUAHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="HOADONDATHANG" Type="Self.HOADONDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="HOADONDATHANG">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATLTT">
+    <End Role="THANHTOAN" Type="Self.THANHTOAN" Multiplicity="0..1" />
+    <End Role="CTHDDATHANG" Type="Self.CTHDDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHTOAN">
+        <PropertyRef Name="MATLTT" />
+      </Principal>
+      <Dependent Role="CTHDDATHANG">
+        <PropertyRef Name="MATLTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHACUNGCAP">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+    <End Role="DoVatNT" Type="Self.DoVatNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="DoVatNT">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLNTModelStoreContainer">
+    <EntitySet Name="DoVatNT" EntityType="Self.DoVatNT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADONDATHANG" EntityType="Self.HOADONDATHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAIDV" EntityType="Self.LOAIDV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHACUNGCAP" EntityType="Self.NHACUNGCAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THANHTOAN" EntityType="Self.THANHTOAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTHDDATHANG" EntityType="Self.CTHDDATHANG" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CTHDDATHANG].[MAHDDATHANG] AS [MAHDDATHANG], 
+    [CTHDDATHANG].[MADV] AS [MADV], 
+    [CTHDDATHANG].[MATLTT] AS [MATLTT], 
+    [CTHDDATHANG].[SL] AS [SL], 
+    [CTHDDATHANG].[KHUYENMAI] AS [KHUYENMAI], 
+    [CTHDDATHANG].[GIABAN] AS [GIABAN], 
+    [CTHDDATHANG].[KHUYENMAIBAN] AS [KHUYENMAIBAN]
+    FROM [dbo].[CTHDDATHANG] AS [CTHDDATHANG]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_LOAINT" Association="Self.FK_LOAINT">
+      <End Role="LOAIDV" EntitySet="LOAIDV" />
+      <End Role="DoVatNT" EntitySet="DoVatNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MADOVAT" Association="Self.FK_MADOVAT">
+      <End Role="DoVatNT" EntitySet="DoVatNT" />
+      <End Role="CTHDDATHANG" EntitySet="CTHDDATHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAHDDATHANG" Association="Self.FK_MAHDDATHANG">
+      <End Role="HOADONDATHANG" EntitySet="HOADONDATHANG" />
+      <End Role="CTHDDATHANG" EntitySet="CTHDDATHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAHDMUAHANG" Association="Self.FK_MAHDMUAHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="HOADONDATHANG" EntitySet="HOADONDATHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATLTT" Association="Self.FK_MATLTT">
+      <End Role="THANHTOAN" EntitySet="THANHTOAN" />
+      <End Role="CTHDDATHANG" EntitySet="CTHDDATHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHACUNGCAP" Association="Self.FK_NHACUNGCAP">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
+      <End Role="DoVatNT" EntitySet="DoVatNT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

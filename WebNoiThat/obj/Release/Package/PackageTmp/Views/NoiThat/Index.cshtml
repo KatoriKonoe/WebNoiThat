@@ -1,0 +1,31 @@
+﻿@*@using WebNoiThat.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<DoVatNT>*@
+@{
+    ViewBag.Title = "Nội Thất Minh Long";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="center_content">
+    <div class="oferta">
+        <img src="~/images/p1_1.png" width="165" height="113" border="0" class="oferta_img" alt="" />
+        <div class="oferta_details">
+            <div class="oferta_title">TỦ GỖ GIA ĐÌNH TA3B2N</div>
+            <div class="oferta_text"> Sản phẩm tủ gỗ TA3B2N thường được dùng để đồ cá nhân, quần áo trong gia đình </div>
+            <a href="http://all-free-download.com/free-website-templates/" class="prod_buy">Xem Chi Tiết</a>
+        </div>
+    </div>
+</div>
+@foreach (var DoVatNT in Model)
+{
+    <div class="prod_box">
+        <a href="@Url.Action("Detail","NoiThat", new { id =DoVatNT.MADV })" class="module a">
+            <h3 class="product_title">   @DoVatNT.TENDV</h3>
+            <img class="product_img" src="~/images/@DoVatNT.HIANH" width="150" />
+            <p class="prod_price">@DoVatNT.GIABANHT VNĐ</p>
+        </a>
+    </div>
+}
+
+@*Trang @(Model.PageCount <Model.PageNumber?0:Model.PageNumber)/@Model.PageCount);
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }));*@
+

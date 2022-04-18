@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLNTModelStoreContainer" CdmEntityContainer="QLNTEntities1">
+    <EntitySetMapping Name="DoVatNTs">
+      <EntityTypeMapping TypeName="QLNTModel.DoVatNT">
+        <MappingFragment StoreEntitySet="DoVatNT">
+          <ScalarProperty Name="MADV" ColumnName="MADV" />
+          <ScalarProperty Name="MATL" ColumnName="MATL" />
+          <ScalarProperty Name="MANCC" ColumnName="MANCC" />
+          <ScalarProperty Name="TENDV" ColumnName="TENDV" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="GIABANHT" ColumnName="GIABANHT" />
+          <ScalarProperty Name="KHUYENMAI" ColumnName="KHUYENMAI" />
+          <ScalarProperty Name="HIANH" ColumnName="HIANH" />
+          <ScalarProperty Name="NGAYCAPNHAP" ColumnName="NGAYCAPNHAP" />
+          <ScalarProperty Name="SLTON" ColumnName="SLTON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONDATHANGs">
+      <EntityTypeMapping TypeName="QLNTModel.HOADONDATHANG">
+        <MappingFragment StoreEntitySet="HOADONDATHANG">
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="MATLTT" ColumnName="MATLTT" />
+          <ScalarProperty Name="MAHDDATHANG" ColumnName="MAHDDATHANG" />
+          <ScalarProperty Name="NGAYMUA" ColumnName="NGAYMUA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="QLNTModel.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+          <ScalarProperty Name="TAIKHOANG" ColumnName="TAIKHOANG" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="DT" ColumnName="DT" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIDVs">
+      <EntityTypeMapping TypeName="QLNTModel.LOAIDV">
+        <MappingFragment StoreEntitySet="LOAIDV">
+          <ScalarProperty Name="MATL" ColumnName="MATL" />
+          <ScalarProperty Name="TENTL" ColumnName="TENTL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHACUNGCAPs">
+      <EntityTypeMapping TypeName="QLNTModel.NHACUNGCAP">
+        <MappingFragment StoreEntitySet="NHACUNGCAP">
+          <ScalarProperty Name="MANCC" ColumnName="MANCC" />
+          <ScalarProperty Name="TENNCC" ColumnName="TENNCC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHTOANs">
+      <EntityTypeMapping TypeName="QLNTModel.THANHTOAN">
+        <MappingFragment StoreEntitySet="THANHTOAN">
+          <ScalarProperty Name="MATLTT" ColumnName="MATLTT" />
+          <ScalarProperty Name="TENTLTT" ColumnName="TENTLTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTHDDATHANGs">
+      <EntityTypeMapping TypeName="QLNTModel.CTHDDATHANG">
+        <MappingFragment StoreEntitySet="CTHDDATHANG">
+          <ScalarProperty Name="MAHDDATHANG" ColumnName="MAHDDATHANG" />
+          <ScalarProperty Name="MADV" ColumnName="MADV" />
+          <ScalarProperty Name="MATLTT" ColumnName="MATLTT" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="KHUYENMAI" ColumnName="KHUYENMAI" />
+          <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
+          <ScalarProperty Name="KHUYENMAIBAN" ColumnName="KHUYENMAIBAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

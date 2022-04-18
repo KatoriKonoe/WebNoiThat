@@ -1,0 +1,108 @@
+body{
+    font-size: 13px;margin: 5px 0 0 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.clear{
+    clear: both;
+}
+#container{
+    margin: 0 auto;
+    width: 950px;
+}
+#banner{
+    height: 59px;
+}
+#logo{
+    width: 230px;
+    float: left;
+}
+#menutop{
+    width: 713px;
+    float: right;
+    padding-top: 24px;
+}
+#menutop a{
+    display: block; float: left; height: 26px;
+    padding-top: 9px; width: 100px;
+    text-align: center; background-color: #e9e1cf;
+    font-weight: bold; margin-left: 1px;
+    text-decoration: none; color: #000;
+}
+#menutop a:hover{
+    background-color: #ed8d00;
+    color: #fff;
+}
+#content{ margin-top: 5px;
+}
+#left{ width: 235px; float: left;
+}
+#right{ width: 713px; float: right;
+}
+.module{
+    background-image: url(../Img/extra-box-bg.jpg);
+    background-repeat: repeat; margin-bottom: 5px;
+}
+    .module h3 {
+        margin: 0;
+        height: 28px;
+        padding-top: 8px;       
+        background-image: url('../Img/module-bg.jpg');
+        background-position: left top;
+        padding-left: 45px;
+        font-size: 14px;
+        color: #fff;
+    }
+    .module a {
+        display: block;
+        background-image: url('../Img/mainlevel-bg.png/..');
+        background-repeat: no-repeat;
+        height: 29px;
+        padding-left: 50px;
+        padding-top: 7px;
+        text-decoration: none;
+        font-weight: bold;
+        color: #000;
+    }
+.module a:hover{color: #fff;
+}
+.module .StatisticImg{ text-align: center; margin-top: 2px;
+}
+.module .StatisticImg img{}
+.module .StatisticContent .leftAlign{
+    width: 150px; margin-left: 15px; float: left;
+}
+.module .StatisticContent .rightAlign{text-align: right; margin-right: 15px; float: right;}
+.module .ads{ border: #fff 1px solid; padding: 1px;}
+.module .ads img{ width: 231px;}
+
+#slideshow{ float: left;}
+
+#products{ float: left;}
+    #products h3.header {
+        margin: 0;
+        height: 28px;
+        padding-top: 8px;
+        background-image: url('../Img/module-bg2.jpg/..');
+        background-position: left top;
+        padding-left: 45px;
+        font-size: 14px;
+        width: 668px;
+    }
+.item{
+    width: 215px; text-align: center;
+    border: 1px #00FF00 dotted; float: left; padding: 10px;
+}
+.item .productName{
+    margin: 0; font-size: 12px; margin-bottom: 10px;
+}
+.item .productPrice{ color: #F00;}
+.item .productDetail, .item .productBigImg{
+    width: 80px; float: left; height: 25px;
+    padding-top: 10px; display: block;
+    text-decoration: none;
+}
+.item .productDetail{
+    background-color: #e8e1c1; margin-left: 30px; color: #000;    
+}
+.item .productBigImg{ background-color: #ed8c01; color: #fff;}
+.item .productDetail:hover, .item .productBigImg:hover{ font-weight: bold;}

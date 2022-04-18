@@ -1,0 +1,47 @@
+﻿@using WebNoiThat.Models
+@model List<Giohang>
+@{
+    ViewBag.Title = "Giohang";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2> THÔNG TIN GIỎ HÀNG</h2>
+<table>
+    <tr>
+        <td>Mä đồ vật</td>
+        <td>Tên đồ vật</td>
+        <td>Ảnh</td>
+        <td>Số lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @item.iMADV</td>
+            <td> @item.sTENDV</td>
+            <td><img src="~/images/@item.sHIANH" /></td>
+            <td>@item.iSL</td>
+            <td>@String.Format("{0:0,0}", item.dGIABANHT)</td>
+            <td>@String.Format("{0:0,0}", item.dThanhtien)</td>
+            <td> <a href="@Url.Action("Detail", "NoiThat", new { id = item.iMADV})"> Chi tiết </a></td>
+            <td> @Html.ActionLink("Xóa", "XoaGiohang", new { @iMaSP = item.iMADV })</td>
+            <td></td>
+        </tr>
+    }
+    <tr style="font-weight: bold; text-align:right; color:red">
+        <td colspan="3"> Số lượng: @ViewBag.Tongsoluong </td>
+        @*<td colspan="3"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ </td>*@
+    </tr>
+    <tr style="font-weight: bold; color:blue; text-align:right ">
+        <td colspan-"g">
+            @Html.ActionLink("Xóa Giỏ Hàng", "XoaTatcaGiohang")
+        </td>
+    </tr>
+    <tr style="font-weight: bold; color:blue; text-align:right ">
+        <td colspan-"9" align="center">
+            @Html.ActionLink("ĐẶT HÀNG", "DatHang", "Giohang")
+        </td>
+    </tr>
+</table>
+
